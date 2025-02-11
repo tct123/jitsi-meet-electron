@@ -119,6 +119,7 @@
         }
       ]
     },
+    "rpm":{"depends":[]},
     "directories": {
       "buildResources": "resources"
     },
