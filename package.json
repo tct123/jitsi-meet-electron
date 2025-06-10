@@ -1,6 +1,6 @@
 {
   "name": "jitsi-meet-electron",
-  "version": "2024.3.0",
+  "version": "2025.4.0",
   "description": "Electron application for Jitsi Meet",
   "main": "./build/main.js",
   "productName": "Jitsi Meet",
@@ -21,7 +21,6 @@
     "appId": "org.jitsi.jitsi-meet",
     "productName": "Jitsi Meet",
     "generateUpdatesFilesForAllChannels": true,
-    "afterSign": "./notarize.js",
     "npmRebuild": false,
     "files": [
       "build",
@@ -43,11 +42,7 @@
       ],
       "category": "public.app-category.video",
       "darkModeSupport": true,
-      "hardenedRuntime": true,
-      "entitlements": "entitlements.mac.plist",
-      "entitlementsInherit": "entitlements.mac.plist",
-      "asarUnpack": "**/*.node",
-      "notarize": false,
+      "entitlements": "resources/entitlements.mac.plist",
       "extendInfo": {
         "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
         "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video).",
@@ -63,20 +58,6 @@
       "artifactName": "jitsi-meet-${arch}.${ext}",
       "category": "VideoConference;AudioVideo;Audio;Video;Network",
       "description": "Jitsi Meet Desktop App",
-      "desktop": {
-        "Comment[de]": "Jitsi Meet Desktop App",
-        "Comment[es]": "Aplicación de escritorio Jitsi Meet",
-        "Comment[fr]": "Application de bureau Jitsi Meet",
-        "Comment[hi]": "जितसि मीट डेस्कटॉप एैप",
-        "Comment[hr]": "Jitsi Meet desktop aplikacija",
-        "Comment[hu]": "Asztali Jitsi Meet-alkalmazás",
-        "Comment[it]": "Applicazione Jitsi Meet Desktop",
-        "Comment[pt]": "Aplicativo Jitsi Meet",
-        "Comment[ru]": "Приложение Jitsi Meet",
-        "Comment[sq]": "Aplikacion Jitsi Meet për Desktop",
-        "Comment[zh-CN]": "Jitsi Meet 桌面应用",
-        "Comment[zh-TW]": "Jitsi Meet 桌面應用程式"
-      },
       "executableName": "jitsi-meet",
       "target": [
         {
@@ -97,23 +78,14 @@
         }
       ]
     },
-    "deb": {
-      "depends": [
-        "libgtk-3-0",
-        "libnss3",
-        "libxtst6",
-        "xdg-utils",
-        "libatspi2.0-0",
-        "libuuid1"
-      ]
-    },
     "win": {
       "artifactName": "jitsi-meet.${ext}",
       "target": [
         {
           "arch": [
             "ia32",
-            "x64"
+            "x64",
+            "arm64"
           ],
           "target": "nsis"
         }
@@ -150,7 +122,7 @@
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "dependencies": {
-    "@jitsi/electron-sdk": "6.0.29",
+    "@jitsi/electron-sdk": "7.0.6",
     "electron-debug": "^3.2.0",
     "electron-reload": "^1.5.0"
   },
@@ -180,14 +152,13 @@
     "babel-loader": "^8.2.3",
     "concurrently": "5.1.0",
     "css-loader": "^6.7.1",
-    "electron": "29.1.1",
-    "electron-builder": "24.13.3",
+    "electron": "35.1.5",
+    "electron-builder": "26.0.12",
     "electron-context-menu": "^2.5.0",
     "electron-is-dev": "^1.2.0",
     "electron-log": "^4.3.2",
-    "electron-notarize": "1.1.1",
     "electron-react-devtools": "0.5.3",
-    "electron-updater": "5.0.5",
+    "electron-updater": "6.6.2",
     "electron-window-state": "^5.0.3",
     "eslint": "6.5.1",
     "eslint-config-jitsi": "github:jitsi/eslint-config-jitsi#1.0.2",
@@ -202,7 +173,7 @@
     "i18next": "^19.9.2",
     "moment": "^2.29.2",
     "mousetrap": "^1.6.5",
-    "patch-package": "6.2.2",
+    "patch-package": "6.5.1",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
     "react-i18next": "^11.8.12",
@@ -214,7 +185,7 @@
     "source-map-support": "^0.5.19",
     "style-loader": "^3.3.1",
     "styled-components": "^3.4.10",
-    "webpack": "^5.76.0",
+    "webpack": "^5.94.0",
     "webpack-cli": "^4.9.2"
   }
 }
