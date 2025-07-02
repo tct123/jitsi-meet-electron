@@ -1,6 +1,6 @@
 {
   "name": "jitsi-meet-electron",
-  "version": "2025.2.0",
+  "version": "2025.4.0",
   "description": "Electron application for Jitsi Meet",
   "main": "./build/main.js",
   "productName": "Jitsi Meet",
@@ -21,7 +21,6 @@
     "appId": "org.jitsi.jitsi-meet",
     "productName": "Jitsi Meet",
     "generateUpdatesFilesForAllChannels": true,
-    "afterSign": "./notarize.js",
     "npmRebuild": false,
     "files": [
       "build",
@@ -43,11 +42,7 @@
       ],
       "category": "public.app-category.video",
       "darkModeSupport": true,
-      "hardenedRuntime": true,
-      "entitlements": "entitlements.mac.plist",
-      "entitlementsInherit": "entitlements.mac.plist",
-      "asarUnpack": "**/*.node",
-      "notarize": false,
+      "entitlements": "resources/entitlements.mac.plist",
       "extendInfo": {
         "NSCameraUsageDescription": "Jitsi Meet requires access to your camera in order to make video-calls.",
         "NSMicrophoneUsageDescription": "Jitsi Meet requires access to your microphone in order to make calls (audio/video).",
@@ -63,20 +58,6 @@
       "artifactName": "jitsi-meet-${arch}.${ext}",
       "category": "VideoConference;AudioVideo;Audio;Video;Network",
       "description": "Jitsi Meet Desktop App",
-      "desktop": {
-        "Comment[de]": "Jitsi Meet Desktop App",
-        "Comment[es]": "Aplicación de escritorio Jitsi Meet",
-        "Comment[fr]": "Application de bureau Jitsi Meet",
-        "Comment[hi]": "जितसि मीट डेस्कटॉप एैप",
-        "Comment[hr]": "Jitsi Meet desktop aplikacija",
-        "Comment[hu]": "Asztali Jitsi Meet-alkalmazás",
-        "Comment[it]": "Applicazione Jitsi Meet Desktop",
-        "Comment[pt]": "Aplicativo Jitsi Meet",
-        "Comment[ru]": "Приложение Jitsi Meet",
-        "Comment[sq]": "Aplikacion Jitsi Meet për Desktop",
-        "Comment[zh-CN]": "Jitsi Meet 桌面应用",
-        "Comment[zh-TW]": "Jitsi Meet 桌面應用程式"
-      },
       "executableName": "jitsi-meet",
       "target": [
         {
@@ -97,29 +78,19 @@
         }
       ]
     },
-    "deb": {
-      "depends": [
-        "libgtk-3-0",
-        "libnss3",
-        "libxtst6",
-        "xdg-utils",
-        "libatspi2.0-0",
-        "libuuid1"
-      ]
-    },
     "win": {
       "artifactName": "jitsi-meet.${ext}",
       "target": [
         {
           "arch": [
             "ia32",
-            "x64"
+            "x64",
+            "arm64"
           ],
           "target": "nsis"
         }
       ]
     },
-    "rpm":{"depends":[]},
     "directories": {
       "buildResources": "resources"
     },
@@ -151,18 +122,18 @@
   "readmeFilename": "README.md",
   "license": "Apache-2.0",
   "dependencies": {
-    "@jitsi/electron-sdk": "7.0.1",
+    "@jitsi/electron-sdk": "7.0.6",
     "electron-debug": "^3.2.0",
     "electron-reload": "^1.5.0"
   },
   "devDependencies": {
     "@atlaskit/button": "^10.1.3",
-    "@atlaskit/css-reset": "^6.12.0",
-    "@atlaskit/droplist": "^11.0.11",
-    "@atlaskit/field-text": "^11.0.7",
-    "@atlaskit/icon": "^23.7.0",
-    "@atlaskit/navigation": "^37.0.2",
-    "@atlaskit/onboarding": "^12.3.2",
+    "@atlaskit/css-reset": "^3.0.8",
+    "@atlaskit/droplist": "^7.0.19",
+    "@atlaskit/field-text": "^7.1.0",
+    "@atlaskit/icon": "^15.0.3",
+    "@atlaskit/navigation": "^33.3.10",
+    "@atlaskit/onboarding": "^6.2.0",
     "@atlaskit/page": "^8.0.12",
     "@atlaskit/spinner": "^9.0.13",
     "@atlaskit/theme": "^7.0.5",
@@ -174,7 +145,6 @@
     "@babel/preset-env": "^7.16.11",
     "@babel/preset-flow": "^7.16.7",
     "@babel/preset-react": "^7.16.7",
-    "@electron/notarize": "2.4.0",
     "@hapi/bourne": "^3.0.0",
     "@jitsi/js-utils": "2.0.5",
     "@svgr/webpack": "^6.2.1",
@@ -182,13 +152,13 @@
     "babel-loader": "^8.2.3",
     "concurrently": "5.1.0",
     "css-loader": "^6.7.1",
-    "electron": "34.1.1",
-    "electron-builder": "24.13.3",
+    "electron": "35.1.5",
+    "electron-builder": "26.0.12",
     "electron-context-menu": "^2.5.0",
     "electron-is-dev": "^1.2.0",
     "electron-log": "^4.3.2",
     "electron-react-devtools": "0.5.3",
-    "electron-updater": "^6.3.9",
+    "electron-updater": "6.6.2",
     "electron-window-state": "^5.0.3",
     "eslint": "6.5.1",
     "eslint-config-jitsi": "github:jitsi/eslint-config-jitsi#1.0.2",
@@ -214,7 +184,7 @@
     "redux-persist": "^5.10.0",
     "source-map-support": "^0.5.19",
     "style-loader": "^3.3.1",
-    "styled-components": "^6.1.15",
+    "styled-components": "^3.4.10",
     "webpack": "^5.94.0",
     "webpack-cli": "^4.9.2"
   }
