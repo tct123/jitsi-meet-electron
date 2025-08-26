@@ -1,6 +1,14 @@
 /* global __dirname */
 
 const {
+    initPopupsConfigurationMain,
+    getPopupTarget,
+    RemoteControlMain,
+    setupAlwaysOnTopMain,
+    setupPowerMonitorMain,
+    setupScreenSharingMain
+} = require('@jitsi/electron-sdk');
+const {
     BrowserWindow,
     Menu,
     app,
@@ -11,17 +19,10 @@ const debug = require('electron-debug');
 const isDev = require('electron-is-dev');
 const { autoUpdater } = require('electron-updater');
 const windowStateKeeper = require('electron-window-state');
-const {
-    initPopupsConfigurationMain,
-    getPopupTarget,
-    RemoteControlMain,
-    setupAlwaysOnTopMain,
-    setupPowerMonitorMain,
-    setupScreenSharingMain
-} = require('@jitsi/electron-sdk');
 const path = require('path');
 const process = require('process');
 const URL = require('url');
+
 const config = require('./app/features/config');
 const { openExternalLink } = require('./app/features/utils/openExternalLink');
 const pkgJson = require('./package.json');
@@ -50,7 +51,7 @@ app.commandLine.appendSwitch('force-fieldtrials', 'WebRTC-Audio-Red-For-Opus/Ena
 
 // Wayland: Enable optional PipeWire support.
 if (!app.commandLine.hasSwitch('enable-features')) {
-    app.commandLine.appendSwitch('enable-features', 'WebRTCPipeWireCapturer');
+    app.commandLine.appendSwitch('enable-features', 'WebRTCPipeWireCapturer,WebRtcPipeWireCamera');
 }
 
 autoUpdater.logger = require('electron-log');
